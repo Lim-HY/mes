@@ -345,47 +345,7 @@ document.addEventListener('DOMContentLoaded', () => {
                        <div id="warehousePagination" style="margin-top: 20px; text-align: center;"></div>
                    </div>`,
         '구매': `<h3>구매 메뉴</h3>
-                   <p>원자재 및 부품 구매 관련 정보가 표시됩니다.</p>
-                   <div class="input-group">
-                       <label for="purchaseLotNumber">로트번호:</label>
-                       <input type="text" id="purchaseLotNumber" class="data-input-field" size="10">
-                       <i class="fas fa-microphone microphone-icon"></i>
-                   </div>
-                   <div class="input-group">
-                       <label for="materialToPurchase">구매 자재명:</label>
-                       <input type="text" id="materialToPurchase" class="data-input-field" size="10">
-                       <i class="fas fa-microphone microphone-icon"></i>
-                   </div>
-                   <div class="input-group">
-                       <label for="purchaseQuantity">구매 수량:</label>
-                       <input type="number" id="purchaseQuantity" class="data-input-field" step="0.01" size="10">
-                       <i class="fas fa-microphone microphone-icon"></i>
-                   </div>
-                   <div class="input-group">
-                       <label for="supplier">공급처:</label>
-                       <input type="text" id="supplier" class="data-input-field" size="10">
-                       <i class="fas fa-microphone microphone-icon"></i>
-                   </div>
-                   <div class="input-group">
-                       <label for="purchaseDate">구매 일자:</label>
-                       <input type="date" id="purchaseDate" class="data-input-field" size="10">
-                       <i class="fas fa-microphone microphone-icon"></i>
-                   </div>
-                   <div class="input-group">
-                       <label for="purchaseOrderNumber">구매 오더 번호:</label>
-                       <input type="text" id="purchaseOrderNumber" class="data-input-field" size="10">
-                       <i class="fas fa-microphone microphone-icon"></i>
-                   </div>
-                   <div class="input-group">
-                       <label for="unitPrice">단가:</label>
-                       <input type="number" id="unitPrice" class="data-input-field" step="0.01" size="10">
-                       <i class="fas fa-microphone microphone-icon"></i>
-                   </div>
-                   <div class="input-group">
-                       <label for="totalPrice">총 금액:</label>
-                       <input type="number" id="totalPrice" class="data-input-field" step="0.01" size="10">
-                       <i class="fas fa-microphone microphone-icon"></i>
-                   </div>`,
+                   <p>구매 관련 정보가 표시됩니다.</p>`,
         '보고서': `<h3>보고서 메뉴</h3>
                      <p>다양한 생산 및 관리 보고서가 제공됩니다.</p>`,
         '생산 계획/실적': `<h3>생산 계획/실적 메뉴</h3>
@@ -516,30 +476,30 @@ document.addEventListener('DOMContentLoaded', () => {
         '용해작업 지시': `<h4>용해작업 지시</h4>
                     <p>용해작업 지시 데이터를 확인하거나 다운로드할 수 있습니다.</p>
                     
-                    <div style="text-align: center; padding: 40px;">
-                        <div style="margin-bottom: 30px;">
+            <div style="text-align: center; padding: 40px;">
+                <div style="margin-bottom: 30px;">
                             <i class="fas fa-file-excel" style="font-size: 4em; color: #2196f3; margin-bottom: 20px;"></i>
                             <h5 style="color: #333; margin-bottom: 10px;">용해작업 지시 데이터</h5>
                             <p style="color: #666; margin-bottom: 20px;">파일 크기: 3.2KB | 형식: CSV</p>
-                        </div>
+                </div>
                         
-                        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
                             <button onclick="viewMeltingInstructionData()" style="
-                                background-color: #2196f3; 
-                                color: white; 
-                                padding: 12px 24px; 
-                                border: none; 
-                                border-radius: 6px; 
-                                cursor: pointer; 
-                                font-weight: bold;
-                                display: inline-flex;
-                                align-items: center;
-                                gap: 8px;
-                                transition: all 0.3s ease;
-                            " onmouseover="this.style.backgroundColor='#1976d2'" onmouseout="this.style.backgroundColor='#2196f3'">
-                                <i class="fas fa-table"></i>
-                                데이터 보기
-                            </button>
+                        background-color: #2196f3; 
+                        color: white; 
+                        padding: 12px 24px; 
+                        border: none; 
+                        border-radius: 6px; 
+                        cursor: pointer; 
+                        font-weight: bold;
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 8px;
+                        transition: all 0.3s ease;
+                    " onmouseover="this.style.backgroundColor='#1976d2'" onmouseout="this.style.backgroundColor='#2196f3'">
+                        <i class="fas fa-table"></i>
+                        데이터 보기
+                    </button>
                             
                             <button onclick="downloadMeltingInstruction()" style="
                                 background-color: #4caf50; 
@@ -649,8 +609,8 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <i class="fas fa-download"></i>
                                 CSV 다운로드
                             </button>
-                        </div>
-                    </div>`
+                </div>
+            </div>`
     };
 
     // 서브 메뉴 콘텐츠 정의
@@ -2995,4 +2955,6 @@ RL-2024-005,2024-01-19,Pure_Fe,순철,100,07:45,정수민,정상`;
             }
         }
     }, true);
+
+    // 원료투입량 계산기': `<h4>원료투입량 계산기</h4><iframe src="원료투입량 계산기/index.html" style="width:100%;height:700px;border:none;"></iframe>`,
 }); 
