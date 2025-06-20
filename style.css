@@ -1,0 +1,393 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f0f2f5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.header {
+    background-color: #3f51b5;
+    color: white;
+    width: 100%;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.dashboard-button {
+    background-color: white;
+    border-radius: 15px;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    color: white;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.dashboard-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.dashboard-button i {
+    font-size: 3.5em;
+    margin-bottom: 15px;
+}
+
+.dashboard-button p {
+    margin: 0;
+}
+
+/* Colors */
+.dashboard-button.blue { background-color: #2196f3; }
+.dashboard-button.green { background-color: #4caf50; }
+.dashboard-button.orange { background-color: #ff9800; }
+.dashboard-button.red { background-color: #f44336; }
+.dashboard-button.purple { background-color: #9c27b0; }
+.dashboard-button.light-blue { background-color: #03a9f4; }
+.dashboard-button.brown { background-color: #795548; }
+.dashboard-button.dark-gray { background-color: #607d8b; }
+.dashboard-button.pink { background-color: #e91e63; }
+.dashboard-button.dark-blue { background-color: #3f51b5; }
+.dashboard-button.orange-red { background-color: #ff5722; }
+.dashboard-button.lime-green { background-color: #8bc34a; }
+.dashboard-button.deep-purple { background-color: #673ab7; }
+.dashboard-button.deep-orange { background-color: #ff5722; }
+.dashboard-button.teal { background-color: #009688; }
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto; /* Centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 800px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    position: relative;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Input Field Styles */
+.input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    gap: 10px;
+}
+
+.input-group label {
+    min-width: 150px;
+    font-weight: bold;
+    color: #333;
+}
+
+.data-input-field {
+    flex-grow: 1;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #e0e0e0; /* Light gray background */
+    color: #333;
+    font-size: 1em;
+    max-width: 200px; /* Adjust as needed, approx 10 chars */
+}
+
+.data-input-field[type="number"]::-webkit-outer-spin-button,
+.data-input-field[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.data-input-field[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.microphone-icon {
+    color: #4CAF50;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.microphone-icon:hover {
+    color: #388E3C;
+}
+
+/* Sub-Menu Styles */
+.sub-menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Adjust number of columns as needed */
+    gap: 15px;
+    padding: 15px;
+    width: 100%;
+}
+
+.sub-menu-button {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px 15px; /* Slightly smaller padding than main buttons */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    color: white;
+    font-size: 0.9em; /* Slightly smaller font size */
+    font-weight: bold;
+    min-height: 80px; /* Smaller height */
+}
+
+.sub-menu-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.sub-menu-button i {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.sub-menu-button p {
+    margin: 0;
+}
+
+/* Lighter colors for sub-menu buttons */
+.sub-menu-button.light-blue { background-color: #64b5f6; }
+.sub-menu-button.light-green { background-color: #81c784; }
+.sub-menu-button.light-orange { background-color: #ffb74d; }
+.sub-menu-button.light-red { background-color: #ef9a9a; }
+.sub-menu-button.light-purple { background-color: #ce93d8; }
+.sub-menu-button.light-teal { background-color: #4db6ac; }
+.sub-menu-button.light-brown { background-color: #a1887f; }
+.sub-menu-button.light-gray { background-color: #90a4ae; }
+.sub-menu-button.light-pink { background-color: #f06292; }
+.sub-menu-button.light-dark-blue { background-color: #7986cb; }
+
+/* Mold Master Section Styles */
+.mold-master-section {
+    margin-top: 20px;
+}
+
+.mold-master-section h5 {
+    color: #2196f3;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.file-actions {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.download-btn, .view-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: white;
+}
+
+.download-btn {
+    background-color: #4caf50;
+}
+
+.download-btn:hover {
+    background-color: #388e3c;
+    transform: translateY(-2px);
+}
+
+.view-btn {
+    background-color: #2196f3;
+}
+
+.view-btn:hover {
+    background-color: #1976d2;
+    transform: translateY(-2px);
+}
+
+.mold-master-content {
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    padding: 30px;
+    text-align: center;
+    margin-bottom: 30px;
+    background-color: #f9f9f9;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.placeholder-content {
+    color: #666;
+}
+
+.placeholder-content i {
+    color: #2196f3;
+    margin-bottom: 15px;
+}
+
+.placeholder-content p {
+    margin: 5px 0;
+}
+
+.mold-registration-form {
+    border-top: 2px solid #e0e0e0;
+    padding-top: 20px;
+    margin-top: 20px;
+}
+
+.mold-registration-form h6 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+.file-viewer {
+    text-align: left;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+}
+
+.file-viewer h6 {
+    color: #2196f3;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.file-info {
+    background-color: #f5f5f5;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.file-info p {
+    margin: 5px 0;
+    color: #333;
+}
+
+.file-preview {
+    background-color: #fff3cd;
+    border: 1px solid #ffeaa7;
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 15px;
+}
+
+.file-preview p {
+    margin: 5px 0;
+    color: #856404;
+}
+
+.file-preview ul {
+    margin: 10px 0;
+    padding-left: 20px;
+}
+
+.file-preview li {
+    margin: 8px 0;
+    color: #856404;
+}
+
+.file-preview a {
+    color: #2196f3;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.file-preview a:hover {
+    text-decoration: underline;
+}
+
+.download-btn-small {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: 10px;
+}
+
+.download-btn-small:hover {
+    background-color: #388e3c;
+} 
