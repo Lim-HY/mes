@@ -243,118 +243,107 @@ document.addEventListener('DOMContentLoaded', () => {
                          <i class="fas fa-microphone microphone-icon"></i>
                      </div>
                      <div class="input-group">
-                         <label for="shotTime">쇼트시간:</label>
-                         <input type="text" id="shotTime" class="data-input-field" size="10" placeholder="분:초">
+                         <label for="shotDatetime">쇼트 일시:</label>
+                         <input type="datetime-local" id="shotDatetime" class="data-input-field" size="20">
                          <i class="fas fa-microphone microphone-icon"></i>
                      </div>
                      <div class="input-group">
-                         <label for="sandingStatus">샌딩 여부:</label>
-                         <input type="text" id="sandingStatus" class="data-input-field" size="10" placeholder="Y/N">
+                         <label for="shotOperator">쇼트 작업자:</label>
+                         <input type="text" id="shotOperator" class="data-input-field" size="10">
                          <i class="fas fa-microphone microphone-icon"></i>
                      </div>
                      <div class="input-group">
-                         <label for="sandingTime">샌딩 시간:</label>
-                         <input type="text" id="sandingTime" class="data-input-field" size="10" placeholder="분:초">
+                         <label for="heatTreatmentStatus">열처리 여부:</label>
+                         <input type="text" id="heatTreatmentStatus" class="data-input-field" size="10" placeholder="Y/N">
                          <i class="fas fa-microphone microphone-icon"></i>
                      </div>
                      <div class="input-group">
-                         <label for="buffingStatus">버핑 여부:</label>
-                         <input type="text" id="buffingStatus" class="data-input-field" size="10" placeholder="Y/N">
+                         <label for="heatTreatmentType">열처리 종류:</label>
+                         <select id="heatTreatmentType" class="data-input-field">
+                             <option value="">선택</option>
+                             <option value="응력제거 열처리">응력제거 열처리</option>
+                             <option value="애닐링 소둔 열처리">애닐링 소둔 열처리</option>
+                         </select>
+                     </div>
+                     <div class="input-group">
+                         <label for="heatTreatmentTemp">열처리 온도:</label>
+                         <input type="number" id="heatTreatmentTemp" class="data-input-field" step="0.01" size="10">
                          <i class="fas fa-microphone microphone-icon"></i>
                      </div>
                      <div class="input-group">
-                         <label for="buffingTime">버핑 시간:</label>
-                         <input type="text" id="buffingTime" class="data-input-field" size="10" placeholder="분:초">
+                         <label for="heatTreatmentDuration">열처리 온도 유지시간:</label>
+                         <input type="number" id="heatTreatmentDuration" class="data-input-field" step="0.01" size="10">
                          <i class="fas fa-microphone microphone-icon"></i>
                      </div>
                      <div class="input-group">
-                         <label for="postCoolingTime">냉각 시간:</label>
-                         <input type="number" id="postCoolingTime" class="data-input-field" step="0.01" size="10">
+                         <label for="heatTreatmentDate">열처리 일자:</label>
+                         <input type="date" id="heatTreatmentDate" class="data-input-field" size="10">
                          <i class="fas fa-microphone microphone-icon"></i>
                      </div>
                      <div class="input-group">
-                         <label for="formingWeight">성형 중량:</label>
-                         <input type="number" id="formingWeight" class="data-input-field" step="0.01" size="10">
-                         <i class="fas fa-microphone microphone-icon"></i>
+                         <label for="coolingMethod">냉각 방법:</label>
+                         <select id="coolingMethod" class="data-input-field">
+                             <option value="">선택</option>
+                             <option value="로냉">로냉</option>
+                             <option value="공냉">공냉</option>
+                         </select>
                      </div>
                      <div class="input-group">
-                         <label for="productWeight">제품 중량:</label>
-                         <input type="number" id="productWeight" class="data-input-field" step="0.01" size="10">
+                         <label for="heatTreatmentOperator">열처리 작업자:</label>
+                         <input type="text" id="heatTreatmentOperator" class="data-input-field" size="10">
                          <i class="fas fa-microphone microphone-icon"></i>
                      </div>`,
         '출하': `<h3>출하 메뉴</h3>
-                   <p>완제품 출하 관련 정보가 표시됩니다.</p>`,
+                   <p>완제품 출하 관련 정보가 표시됩니다.</p>
+                   <div class="input-group">
+                       <label for="shipmentDatetime">출하 일시:</label>
+                       <input type="datetime-local" id="shipmentDatetime" class="data-input-field" size="20">
+                   </div>
+                   <div class="input-group">
+                       <label for="vehicleNumber">차량 번호:</label>
+                       <input type="text" id="vehicleNumber" class="data-input-field" size="10">
+                   </div>
+                   <div id="shipment-items-section">
+                       <div class="input-group" style="margin-top:16px;">
+                           <label for="lotNumberInput">로트번호:</label>
+                           <input type="text" id="lotNumberInput" class="data-input-field" size="10">
+                           <label for="quantityInput" style="margin-left:12px;">수량:</label>
+                           <input type="number" id="quantityInput" class="data-input-field" size="6" min="1" value="1">
+                           <button id="addShipmentItemBtn" style="margin-left:12px; padding:6px 16px; background:#2196f3; color:white; border:none; border-radius:4px; cursor:pointer;">추가</button>
+                       </div>
+                       <div id="shipmentItemsList" style="margin-top:12px;"></div>
+                   </div>
+                   <div style="margin-top:24px; text-align:center;">
+                       <button id="completeShipmentBtn" style="padding:10px 32px; background:#4caf50; color:white; border:none; border-radius:6px; font-weight:bold; cursor:pointer;">완료</button>
+                   </div>
+                   <div id="shipmentResult" style="margin-top:24px;"></div>`,
         '가공': `<h3>가공 메뉴</h3>
-                   <p>제품 가공 공정 관련 정보가 표시됩니다.</p>
-                   <div class="input-group">
-                       <label for="machiningLotNumber">로트번호:</label>
-                       <input type="text" id="machiningLotNumber" class="data-input-field" size="10">
-                       <i class="fas fa-microphone microphone-icon"></i>
-                   </div>
-                   <div class="input-group">
-                       <label for="machiningRPM">가공 RPM:</label>
-                       <input type="number" id="machiningRPM" class="data-input-field" step="0.01" size="10">
-                       <i class="fas fa-microphone microphone-icon"></i>
-                   </div>
-                   <div class="input-group">
-                       <label for="chuckPressure">척압:</label>
-                       <input type="number" id="chuckPressure" class="data-input-field" step="0.01" size="10">
-                       <i class="fas fa-microphone microphone-icon"></i>
-                   </div>
-                   <div class="input-group">
-                       <label for="toolMovementSpeed">공구 이동 속도:</label>
-                       <input type="number" id="toolMovementSpeed" class="data-input-field" step="0.01" size="10">
-                       <i class="fas fa-microphone microphone-icon"></i>
-                   </div>
-                   <div class="input-group">
-                       <label for="machiningCompletionTime">가공 완료 시간:</label>
-                       <input type="text" id="machiningCompletionTime" class="data-input-field" size="10" placeholder="HH:MM">
-                       <i class="fas fa-microphone microphone-icon"></i>
-                   </div>
-                   <div class="input-group">
-                       <label for="operator">작업자:</label>
-                       <input type="text" id="operator" class="data-input-field" size="10">
-                       <i class="fas fa-microphone microphone-icon"></i>
+                   <p>입고된 제품의 가공 현황을 확인할 수 있습니다.</p>
+                   <div id="machining-table-section">
+                       <div style="margin-bottom: 16px; text-align: right;">
+                           <button id="downloadMachiningCSV" style="background-color: #4caf50; color: white; padding: 8px 20px; border: none; border-radius: 5px; cursor: pointer;">CSV 다운로드</button>
+                       </div>
+                       <div id="machiningTableContainer"></div>
+                       <div id="machiningPagination" style="margin-top: 20px; text-align: center;"></div>
                    </div>`,
         '검사': `<h3>검사 메뉴</h3>
-                   <p>제품 품질 검사 관련 정보가 표시됩니다.</p>
-                   <div class="input-group">
-                       <label for="inspectionLotNumber">로트번호:</label>
-                       <input type="text" id="inspectionLotNumber" class="data-input-field" size="10">
-                       <i class="fas fa-microphone microphone-icon"></i>
-                   </div>
-                   <div class="input-group">
-                       <label for="passFail">검사 합격/불합격:</label>
-                       <input type="text" id="passFail" class="data-input-field" size="10" placeholder="합격/불합격">
-                       <i class="fas fa-microphone microphone-icon"></i>
-                   </div>
-                   <div class="input-group">
-                       <label for="failureReason">불합격 사유:</label>
-                       <input type="text" id="failureReason" class="data-input-field" size="10">
-                       <i class="fas fa-microphone microphone-icon"></i>
-                   </div>
-                   <div class="input-group">
-                       <label for="inspector1">1차 검사자:</label>
-                       <input type="text" id="inspector1" class="data-input-field" size="10">
-                       <i class="fas fa-microphone microphone-icon"></i>
-                   </div>
-                   <div class="input-group">
-                       <label for="inspector2">2차 검사자:</label>
-                       <input type="text" id="inspector2" class="data-input-field" size="10">
-                       <i class="fas fa-microphone microphone-icon"></i>
-                   </div>
-                   <div class="input-group">
-                       <label for="inspectionCompletionTime">검사 완료 시간:</label>
-                       <input type="text" id="inspectionCompletionTime" class="data-input-field" size="10" placeholder="HH:MM">
-                       <i class="fas fa-microphone microphone-icon"></i>
+                   <p>입고된 제품의 검사 현황을 확인할 수 있습니다.</p>
+                   <div id="inspection-table-section" style="width: 90vw; max-width: 1400px; min-width: 1100px; min-height: 600px; margin: 0 auto; background: #fff; border-radius: 12px; box-shadow: 0 2px 16px rgba(0,0,0,0.08); padding: 32px 24px 24px 24px;">
+                       <div style="margin-bottom: 16px; text-align: right;">
+                           <button id="downloadInspectionCSV" style="background-color: #4caf50; color: white; padding: 8px 20px; border: none; border-radius: 5px; cursor: pointer;">CSV 다운로드</button>
+                       </div>
+                       <div id="inspectionTableContainer"></div>
+                       <div id="inspectionPagination" style="margin-top: 20px; text-align: center;"></div>
                    </div>`,
         '창고': `<h3>창고 메뉴</h3>
-            <p>재고 및 자재 창고 관리 주요 현황을 선택하세요.</p>
-            <div class="sub-menu-grid" style="display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; align-items: center; margin-top: 32px;">
-                <div class="sub-menu-banner light-blue" data-sub-menu="재공재고 현황" style="flex: 1 1 350px; min-width: 320px; max-width: 500px; height: 90px; display: flex; align-items: center; justify-content: center; border-radius: 18px; background: #e3f2fd; box-shadow: 0 2px 8px rgba(33,150,243,0.08); font-size: 1.25em; font-weight: bold; cursor: pointer;">
-                    <i class="fas fa-warehouse" style="margin-right: 18px; color: #2196f3;"></i> 재공재고 현황
-                </div>
-            </div>`,
+                   <p>창고 재고 및 출하 현황을 확인할 수 있습니다.</p>
+                   <div id="warehouse-table-section" style="width: 50%; border-radius: 12px; box-shadow: 0 2px 16px rgba(0,0,0,0.08); padding: 32px 24px 24px 24px; margin: 0 auto; background: #fff; min-width: 420px;">
+                       <div style="margin-bottom: 16px; text-align: right;">
+                           <button id="downloadWarehouseCSV" style="background-color: #4caf50; color: white; padding: 8px 20px; border: none; border-radius: 5px; cursor: pointer;">CSV 다운로드</button>
+                       </div>
+                       <div id="warehouseTableContainer"></div>
+                       <div id="warehousePagination" style="margin-top: 20px; text-align: center;"></div>
+                   </div>`,
         '구매': `<h3>구매 메뉴</h3>
                    <p>원자재 및 부품 구매 관련 정보가 표시됩니다.</p>
                    <div class="input-group">
@@ -1417,33 +1406,33 @@ Fe_N,페로질소,0.28,0.6,0.7,,,0.8`;
         ],
         '2024-06-16': [
             { 순서: 1, 기종: 'S30MC', 품명: 'S30MC 금형', 수량: 65, 중량: 495, 시간: '오전', 특기사항: '정밀도 높음' },
-            { 순서: 2, 기종: 'DL32', 품명: 'DL32 금형', 수량: 50, 중량: 350, 시간: '오전', 특기사항: '경량화' },
-            { 순서: 3, 기종: 'LUN32', 품명: 'LUN32 금형', 수량: 55, 중량: 360, 시간: '오전', 특기사항: '내식성 강화' },
-            { 순서: 4, 기종: 'EL34', 품명: 'EL34 금형', 수량: 45, 중량: 530, 시간: '오후', 특기사항: '고강도' },
-            { 순서: 5, 기종: 'S32MC', 품명: 'S32MC 금형', 수량: 60, 중량: 505, 시간: '오후', 특기사항: '마모 저항' },
-            { 순서: 6, 기종: 'DL34', 품명: 'DL34 금형', 수량: 40, 중량: 365, 시간: '오후', 특기사항: '열처리 필요' },
-            { 순서: 7, 기종: 'LUN34', 품명: 'LUN34 금형', 수량: 75, 중량: 375, 시간: '오후', 특기사항: '대형 주문' },
-            { 순서: 8, 기종: 'EL36', 품명: 'EL36 금형', 수량: 35, 중량: 545, 시간: '오후', 특기사항: '특수 용도' }
+            { 순서: 2, 기종: 'DL32', 품명: 'DL32 금형', 수량: 50, 중량: 350, 시간: '오전', 특기사항: '경량화 검증 완료' },
+            { 순서: 3, 기종: 'LUN32', 품명: 'LUN32 금형', 수량: 55, 중량: 360, 시간: '오전', 특기사항: '내식성 테스트 통과' },
+            { 순서: 4, 기종: 'EL34', 품명: 'EL34 금형', 수량: 43, 중량: 530, 시간: '오후', 특기사항: '고강도 요구 충족' },
+            { 순서: 5, 기종: 'S32MC', 품명: 'S32MC 금형', 수량: 57, 중량: 505, 시간: '오후', 특기사항: '마모 저항 확인' },
+            { 순서: 6, 기종: 'DL34', 품명: 'DL34 금형', 수량: 38, 중량: 365, 시간: '오후', 특기사항: '열처리 완료' },
+            { 순서: 7, 기종: 'LUN34', 품명: 'LUN34 금형', 수량: 72, 중량: 375, 시간: '오후', 특기사항: '대형 주문 완료' },
+            { 순서: 8, 기종: 'EL36', 품명: 'EL36 금형', 수량: 32, 중량: 545, 시간: '오후', 특기사항: '특수 용도 검증' }
         ],
         '2024-06-17': [
-            { 순서: 1, 기종: 'S34MC', 품명: 'S34MC 금형', 수량: 80, 중량: 515, 시간: '오전', 특기사항: '고정밀 가공' },
-            { 순서: 2, 기종: 'DL36', 품명: 'DL36 금형', 수량: 55, 중량: 380, 시간: '오전', 특기사항: '내열성 강화' },
-            { 순서: 3, 기종: 'LUN36', 품명: 'LUN36 금형', 수량: 65, 중량: 390, 시간: '오전', 특기사항: '내식성 테스트' },
-            { 순서: 4, 기종: 'EL38', 품명: 'EL38 금형', 수량: 50, 중량: 560, 시간: '오후', 특기사항: '고강도 요구' },
-            { 순서: 5, 기종: 'S36MC', 품명: 'S36MC 금형', 수량: 70, 중량: 525, 시간: '오후', 특기사항: '마모 저항성' },
-            { 순서: 6, 기종: 'DL38', 품명: 'DL38 금형', 수량: 45, 중량: 395, 시간: '오후', 특기사항: '경량화 설계' },
-            { 순서: 7, 기종: 'LUN38', 품명: 'LUN38 금형', 수량: 85, 중량: 405, 시간: '오후', 특기사항: '대량 생산' },
-            { 순서: 8, 기종: 'EL40', 품명: 'EL40 금형', 수량: 40, 중량: 575, 시간: '오후', 특기사항: '특수 용도' }
+            { 순서: 1, 기종: 'S34MC', 품명: 'S34MC 금형', 수량: 76, 중량: 515, 시간: '오전', 특기사항: '고정밀 가공 완료' },
+            { 순서: 2, 기종: 'DL36', 품명: 'DL36 금형', 수량: 52, 중량: 380, 시간: '오전', 특기사항: '내열성 강화 확인' },
+            { 순서: 3, 기종: 'LUN36', 품명: 'LUN36 금형', 수량: 61, 중량: 390, 시간: '오전', 특기사항: '내식성 테스트 완료' },
+            { 순서: 4, 기종: 'EL38', 품명: 'EL38 금형', 수량: 47, 중량: 560, 시간: '오후', 특기사항: '고강도 요구 충족' },
+            { 순서: 5, 기종: 'S36MC', 품명: 'S36MC 금형', 수량: 66, 중량: 525, 시간: '오후', 특기사항: '마모 저항성 확인' },
+            { 순서: 6, 기종: 'DL38', 품명: 'DL38 금형', 수량: 42, 중량: 395, 시간: '오후', 특기사항: '경량화 설계 검증' },
+            { 순서: 7, 기종: 'LUN38', 품명: 'LUN38 금형', 수량: 81, 중량: 405, 시간: '오후', 특기사항: '대량 생산 완료' },
+            { 순서: 8, 기종: 'EL40', 품명: 'EL40 금형', 수량: 37, 중량: 575, 시간: '오후', 특기사항: '특수 용도 완료' }
         ],
         '2024-06-18': [
-            { 순서: 1, 기종: 'S38MC', 품명: 'S38MC 금형', 수량: 75, 중량: 535, 시간: '오전', 특기사항: '정밀도 높음' },
-            { 순서: 2, 기종: 'DL40', 품명: 'DL40 금형', 수량: 60, 중량: 410, 시간: '오전', 특기사항: '내구성 강화' },
-            { 순서: 3, 기종: 'LUN40', 품명: 'LUN40 금형', 수량: 70, 중량: 420, 시간: '오전', 특기사항: '표면 처리' },
-            { 순서: 4, 기종: 'EL42', 품명: 'EL42 금형', 수량: 55, 중량: 590, 시간: '오후', 특기사항: '고온 내성' },
-            { 순서: 5, 기종: 'S40MC', 품명: 'S40MC 금형', 수량: 65, 중량: 545, 시간: '오후', 특기사항: '마모 저항' },
-            { 순서: 6, 기종: 'DL42', 품명: 'DL42 금형', 수량: 50, 중량: 425, 시간: '오후', 특기사항: '경량화' },
-            { 순서: 7, 기종: 'LUN42', 품명: 'LUN42 금형', 수량: 80, 중량: 435, 시간: '오후', 특기사항: '대형 주문' },
-            { 순서: 8, 기종: 'EL44', 품명: 'EL44 금형', 수량: 35, 중량: 605, 시간: '오후', 특기사항: '특수 재질' }
+            { 순서: 1, 기종: 'S38MC', 품명: 'S38MC 금형', 수량: 71, 중량: 535, 시간: '오전', 특기사항: '정밀도 높음 확인' },
+            { 순서: 2, 기종: 'DL40', 품명: 'DL40 금형', 수량: 57, 중량: 410, 시간: '오전', 특기사항: '내구성 강화 완료' },
+            { 순서: 3, 기종: 'LUN40', 품명: 'LUN40 금형', 수량: 66, 중량: 420, 시간: '오전', 특기사항: '표면 처리 완료' },
+            { 순서: 4, 기종: 'EL42', 품명: 'EL42 금형', 수량: 52, 중량: 590, 시간: '오후', 특기사항: '고온 내성 확인' },
+            { 순서: 5, 기종: 'S40MC', 품명: 'S40MC 금형', 수량: 61, 중량: 545, 시간: '오후', 특기사항: '마모 저항 검증' },
+            { 순서: 6, 기종: 'DL42', 품명: 'DL42 금형', 수량: 47, 중량: 425, 시간: '오후', 특기사항: '경량화 완료' },
+            { 순서: 7, 기종: 'LUN42', 품명: 'LUN42 금형', 수량: 76, 중량: 435, 시간: '오후', 특기사항: '대형 주문 완료' },
+            { 순서: 8, 기종: 'EL44', 품명: 'EL44 금형', 수량: 32, 중량: 605, 시간: '오후', 특기사항: '특수 재질 검증' }
         ],
         '2024-06-19': [
             { 순서: 1, 기종: 'S34MC', 품명: 'S34MC 금형', 수량: 80, 중량: 515, 시간: '오전', 특기사항: '고정밀 가공' },
@@ -2625,4 +2614,385 @@ RL-2024-005,2024-01-19,Pure_Fe,순철,100,07:45,정수민,정상`;
                 contentDiv.innerHTML = '<div style="text-align:center; padding:40px; color:red;">데이터를 불러오지 못했습니다.</div>';
             });
     };
+
+    // 출하 메뉴 동적 입력 기능 추가
+    // 모달이 열릴 때마다 아래 이벤트 바인딩
+    document.addEventListener('click', function(e) {
+        if (e.target && e.target.closest('#addShipmentItemBtn')) {
+            const lot = document.getElementById('lotNumberInput').value.trim();
+            const quantity = document.getElementById('quantityInput').value.trim();
+            if (!lot || !quantity) {
+                alert('로트번호와 수량을 모두 입력하세요.');
+                return;
+            }
+            window._shipmentItems = window._shipmentItems || [];
+            window._shipmentItems.push({ lot, quantity });
+            renderShipmentItemsList();
+            document.getElementById('lotNumberInput').value = '';
+            document.getElementById('quantityInput').value = '1';
+        }
+        if (e.target && e.target.closest('.remove-shipment-item')) {
+            const idx = parseInt(e.target.getAttribute('data-idx'));
+            if (!isNaN(idx)) {
+                window._shipmentItems.splice(idx, 1);
+                renderShipmentItemsList();
+            }
+        }
+        if (e.target && e.target.closest('#completeShipmentBtn')) {
+            const datetime = document.getElementById('shipmentDatetime').value;
+            const vehicle = document.getElementById('vehicleNumber').value.trim();
+            if (!datetime || !vehicle) {
+                alert('출하 일시와 차량 번호를 입력하세요.');
+                return;
+            }
+            if (!window._shipmentItems || window._shipmentItems.length === 0) {
+                alert('출하 품목을 1개 이상 추가하세요.');
+                return;
+            }
+            let html = `<h4>출하 리스트</h4><div><b>출하 일시:</b> ${datetime} <b>차량 번호:</b> ${vehicle}</div>`;
+            html += '<table style="width:100%; border-collapse:collapse; margin-top:12px; border:1px solid #ddd;"><thead><tr style="background:#f5f5f5;"><th style="border:1px solid #ddd; padding:8px;">로트번호</th><th style="border:1px solid #ddd; padding:8px;">수량</th></tr></thead><tbody>';
+            window._shipmentItems.forEach(item => {
+                html += `<tr><td style='border:1px solid #ddd; padding:8px;'>${item.lot}</td><td style='border:1px solid #ddd; padding:8px;'>${item.quantity}</td></tr>`;
+            });
+            html += '</tbody></table>';
+            document.getElementById('shipmentResult').innerHTML = html;
+            window._shipmentItems = [];
+            renderShipmentItemsList();
+        }
+    }, true);
+    function renderShipmentItemsList() {
+        const listDiv = document.getElementById('shipmentItemsList');
+        if (!listDiv) return;
+        const items = window._shipmentItems || [];
+        if (items.length === 0) {
+            listDiv.innerHTML = '<div style="color:#888;">추가된 품목이 없습니다.</div>';
+            return;
+        }
+        let html = '<table style="width:auto; border-collapse:collapse; margin-top:4px; border:1px solid #ddd;"><thead><tr style="background:#f5f5f5;"><th style="border:1px solid #ddd; padding:6px;">로트번호</th><th style="border:1px solid #ddd; padding:6px;">수량</th><th style="border:1px solid #ddd; padding:6px;">삭제</th></tr></thead><tbody>';
+        items.forEach((item, idx) => {
+            html += `<tr><td style='border:1px solid #ddd; padding:6px;'>${item.lot}</td><td style='border:1px solid #ddd; padding:6px;'>${item.quantity}</td><td style='border:1px solid #ddd; padding:6px; text-align:center;'><button class='remove-shipment-item' data-idx='${idx}' style='color:#fff; background:#f44336; border:none; border-radius:3px; padding:2px 8px; cursor:pointer;'>삭제</button></td></tr>`;
+        });
+        html += '</tbody></table>';
+        listDiv.innerHTML = html;
+    }
+
+    // 가공 데이터 샘플 (실제 데이터로 교체 가능)
+    const machiningData = [
+        {입고일: '2024-06-01', 로트번호: 'LOT001', 수량: 10, 기종: 'S26MC', 중량: 474, 가공완료: 'Y'},
+        {입고일: '2024-06-02', 로트번호: 'LOT002', 수량: 8, 기종: 'DL28', 중량: 320, 가공완료: 'N'},
+        {입고일: '2024-06-03', 로트번호: 'LOT003', 수량: 12, 기종: 'LUN28', 중량: 332, 가공완료: 'Y'},
+        {입고일: '2024-06-04', 로트번호: 'LOT004', 수량: 7, 기종: 'EL30', 중량: 500, 가공완료: 'N'},
+        {입고일: '2024-06-05', 로트번호: 'LOT005', 수량: 15, 기종: 'S28MC', 중량: 485, 가공완료: 'Y'},
+        {입고일: '2024-06-06', 로트번호: 'LOT006', 수량: 9, 기종: 'DL30', 중량: 335, 가공완료: 'N'},
+        {입고일: '2024-06-07', 로트번호: 'LOT007', 수량: 11, 기종: 'LUN30', 중량: 345, 가공완료: 'Y'},
+        {입고일: '2024-06-08', 로트번호: 'LOT008', 수량: 13, 기종: 'EL32', 중량: 515, 가공완료: 'N'},
+        {입고일: '2024-06-09', 로트번호: 'LOT009', 수량: 14, 기종: 'S30MC', 중량: 495, 가공완료: 'Y'},
+        {입고일: '2024-06-10', 로트번호: 'LOT010', 수량: 6, 기종: 'DL32', 중량: 350, 가공완료: 'N'},
+        // ... 더 많은 데이터 추가 가능
+    ];
+    let machiningCurrentPage = 1;
+    const machiningItemsPerPage = 5;
+
+    function renderMachiningTable(page) {
+        const startIdx = (page - 1) * machiningItemsPerPage;
+        const endIdx = startIdx + machiningItemsPerPage;
+        const pageData = machiningData.slice(startIdx, endIdx);
+        let html = '<table style="width:100%; border-collapse:collapse; border:1px solid #ddd; min-width:800px;">';
+        html += '<thead><tr style="background:#f5f5f5;">';
+        html += '<th style="border:1px solid #ddd; padding:8px;">입고일</th>';
+        html += '<th style="border:1px solid #ddd; padding:8px;">로트번호</th>';
+        html += '<th style="border:1px solid #ddd; padding:8px;">수량</th>';
+        html += '<th style="border:1px solid #ddd; padding:8px;">기종</th>';
+        html += '<th style="border:1px solid #ddd; padding:8px;">중량(kg)</th>';
+        html += '<th style="border:1px solid #ddd; padding:8px;">가공 완료 여부(Y/N)</th>';
+        html += '</tr></thead><tbody>';
+        if (pageData.length === 0) {
+            html += `<tr><td colspan="6" style="text-align:center; padding:24px; color:#888;">데이터가 없습니다.</td></tr>`;
+        } else {
+            pageData.forEach(row => {
+                html += `<tr>`;
+                html += `<td style='border:1px solid #ddd; padding:8px;'>${row.입고일}</td>`;
+                html += `<td style='border:1px solid #ddd; padding:8px;'>${row.로트번호}</td>`;
+                html += `<td style='border:1px solid #ddd; padding:8px;'>${row.수량}</td>`;
+                html += `<td style='border:1px solid #ddd; padding:8px;'>${row.기종}</td>`;
+                html += `<td style='border:1px solid #ddd; padding:8px;'>${row.중량}</td>`;
+                html += `<td style='border:1px solid #ddd; padding:8px;'>${row.가공완료}</td>`;
+                html += `</tr>`;
+            });
+        }
+        html += '</tbody></table>';
+        document.getElementById('machiningTableContainer').innerHTML = html;
+    }
+
+    function renderMachiningPagination() {
+        const totalPages = Math.ceil(machiningData.length / machiningItemsPerPage);
+        let html = '';
+        if (machiningCurrentPage > 1) {
+            html += `<button onclick="changeMachiningPage(${machiningCurrentPage - 1})" style="background:#2196f3; color:white; padding:8px 15px; border:none; border-radius:4px; cursor:pointer; margin:0 5px;">이전</button>`;
+        }
+        for (let i = 1; i <= totalPages; i++) {
+            if (i === machiningCurrentPage) {
+                html += `<button style="background:#4caf50; color:white; padding:8px 15px; border:none; border-radius:4px; margin:0 5px; font-weight:bold;">${i}</button>`;
+            } else {
+                html += `<button onclick="changeMachiningPage(${i})" style="background:#f0f0f0; color:#333; padding:8px 15px; border:1px solid #ddd; border-radius:4px; cursor:pointer; margin:0 5px;">${i}</button>`;
+            }
+        }
+        if (machiningCurrentPage < totalPages) {
+            html += `<button onclick="changeMachiningPage(${machiningCurrentPage + 1})" style="background:#2196f3; color:white; padding:8px 15px; border:none; border-radius:4px; cursor:pointer; margin:0 5px;">다음</button>`;
+        }
+        document.getElementById('machiningPagination').innerHTML = html;
+    }
+
+    window.changeMachiningPage = function(page) {
+        machiningCurrentPage = page;
+        renderMachiningTable(machiningCurrentPage);
+        renderMachiningPagination();
+    };
+
+    document.addEventListener('click', function(e) {
+        if (e.target && e.target.id === 'downloadMachiningCSV') {
+            let csv = '입고일,로트번호,수량,기종,중량(kg),가공 완료 여부(Y/N)\n';
+            machiningData.forEach(row => {
+                csv += `${row.입고일},${row.로트번호},${row.수량},${row.기종},${row.중량},${row.가공완료}\n`;
+            });
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = '가공_현황_리스트.csv';
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    }, true);
+
+    // 가공 메뉴가 열릴 때 테이블 렌더링
+    document.addEventListener('click', function(e) {
+        if (e.target && e.target.closest('.dashboard-button')) {
+            const btn = e.target.closest('.dashboard-button');
+            const btnText = btn.querySelector('p').textContent;
+            if (btnText === '가공') {
+                setTimeout(() => {
+                    machiningCurrentPage = 1;
+                    renderMachiningTable(machiningCurrentPage);
+                    renderMachiningPagination();
+                }, 100);
+            }
+        }
+    }, true);
+
+    // 검사 데이터 샘플 (실제 데이터로 교체 가능)
+    const inspectionData = [
+        {입고일: '2024-06-01', 로트번호: 'LOT001', 수량: 10, 기종: 'S26MC', 중량: 474, 가공완료: 'Y', 검사완료: 'Y'},
+        {입고일: '2024-06-02', 로트번호: 'LOT002', 수량: 8, 기종: 'DL28', 중량: 320, 가공완료: 'N', 검사완료: 'N'},
+        {입고일: '2024-06-03', 로트번호: 'LOT003', 수량: 12, 기종: 'LUN28', 중량: 332, 가공완료: 'Y', 검사완료: 'Y'},
+        {입고일: '2024-06-04', 로트번호: 'LOT004', 수량: 7, 기종: 'EL30', 중량: 500, 가공완료: 'N', 검사완료: 'N'},
+        {입고일: '2024-06-05', 로트번호: 'LOT005', 수량: 15, 기종: 'S28MC', 중량: 485, 가공완료: 'Y', 검사완료: 'Y'},
+        {입고일: '2024-06-06', 로트번호: 'LOT006', 수량: 9, 기종: 'DL30', 중량: 335, 가공완료: 'N', 검사완료: 'N'},
+        {입고일: '2024-06-07', 로트번호: 'LOT007', 수량: 11, 기종: 'LUN30', 중량: 345, 가공완료: 'Y', 검사완료: 'Y'},
+        {입고일: '2024-06-08', 로트번호: 'LOT008', 수량: 13, 기종: 'EL32', 중량: 515, 가공완료: 'N', 검사완료: 'N'},
+        {입고일: '2024-06-09', 로트번호: 'LOT009', 수량: 14, 기종: 'S30MC', 중량: 495, 가공완료: 'Y', 검사완료: 'Y'},
+        {입고일: '2024-06-10', 로트번호: 'LOT010', 수량: 6, 기종: 'DL32', 중량: 350, 가공완료: 'N', 검사완료: 'N'},
+        // ... 더 많은 데이터 추가 가능
+    ];
+    let inspectionCurrentPage = 1;
+    const inspectionItemsPerPage = 5;
+
+    function renderInspectionTable(page) {
+        const startIdx = (page - 1) * inspectionItemsPerPage;
+        const endIdx = startIdx + inspectionItemsPerPage;
+        const pageData = inspectionData.slice(startIdx, endIdx);
+        let html = '<table style="width:50%; border-collapse:collapse; border:1px solid #ddd; min-width:420px;">';
+        html += '<thead><tr style="background:#f5f5f5;">';
+        html += '<th style="border:1px solid #ddd; padding:8px; width:3%; min-width:30px; max-width:60px;">입고일</th>';
+        html += '<th style="border:1px solid #ddd; padding:8px; width:3%; min-width:30px; max-width:60px;">로트번호</th>';
+        html += '<th style="border:1px solid #ddd; padding:8px; width:3%; min-width:30px; max-width:60px;">수량</th>';
+        html += '<th style="border:1px solid #ddd; padding:8px; width:3%; min-width:30px; max-width:60px;">기종</th>';
+        html += '<th style="border:1px solid #ddd; padding:8px; width:3%; min-width:30px; max-width:60px;">중량(kg)</th>';
+        html += '<th style="border:1px solid #ddd; padding:8px; width:3%; min-width:30px; max-width:60px;">가공 완료 여부(Y/N)</th>';
+        html += '<th style="border:1px solid #ddd; padding:8px; width:3%; min-width:30px; max-width:60px;">검사 완료 여부(Y/N)</th>';
+        html += '</tr></thead><tbody>';
+        if (pageData.length === 0) {
+            html += `<tr><td colspan="7" style="text-align:center; padding:24px; color:#888;">데이터가 없습니다.</td></tr>`;
+        } else {
+            pageData.forEach(row => {
+                html += `<tr>`;
+                html += `<td style='border:1px solid #ddd; padding:8px; width:3%; min-width:30px; max-width:60px;'>${row.입고일}</td>`;
+                html += `<td style='border:1px solid #ddd; padding:8px; width:3%; min-width:30px; max-width:60px;'>${row.로트번호}</td>`;
+                html += `<td style='border:1px solid #ddd; padding:8px; width:3%; min-width:30px; max-width:60px;'>${row.수량}</td>`;
+                html += `<td style='border:1px solid #ddd; padding:8px; width:3%; min-width:30px; max-width:60px;'>${row.기종}</td>`;
+                html += `<td style='border:1px solid #ddd; padding:8px; width:3%; min-width:30px; max-width:60px;'>${row.중량}</td>`;
+                html += `<td style='border:1px solid #ddd; padding:8px; width:3%; min-width:30px; max-width:60px;'>${row.가공완료}</td>`;
+                html += `<td style='border:1px solid #ddd; padding:8px; width:3%; min-width:30px; max-width:60px;'>${row.검사완료}</td>`;
+                html += `</tr>`;
+            });
+        }
+        html += '</tbody></table>';
+        document.getElementById('inspectionTableContainer').innerHTML = html;
+    }
+
+    function renderInspectionPagination() {
+        const totalPages = Math.ceil(inspectionData.length / inspectionItemsPerPage);
+        let html = '';
+        if (inspectionCurrentPage > 1) {
+            html += `<button onclick="changeInspectionPage(${inspectionCurrentPage - 1})" style="background:#2196f3; color:white; padding:8px 15px; border:none; border-radius:4px; cursor:pointer; margin:0 5px;">이전</button>`;
+        }
+        for (let i = 1; i <= totalPages; i++) {
+            if (i === inspectionCurrentPage) {
+                html += `<button style="background:#4caf50; color:white; padding:8px 15px; border:none; border-radius:4px; margin:0 5px; font-weight:bold;">${i}</button>`;
+            } else {
+                html += `<button onclick="changeInspectionPage(${i})" style="background:#f0f0f0; color:#333; padding:8px 15px; border:1px solid #ddd; border-radius:4px; cursor:pointer; margin:0 5px;">${i}</button>`;
+            }
+        }
+        if (inspectionCurrentPage < totalPages) {
+            html += `<button onclick="changeInspectionPage(${inspectionCurrentPage + 1})" style="background:#2196f3; color:white; padding:8px 15px; border:none; border-radius:4px; cursor:pointer; margin:0 5px;">다음</button>`;
+        }
+        document.getElementById('inspectionPagination').innerHTML = html;
+    }
+
+    window.changeInspectionPage = function(page) {
+        inspectionCurrentPage = page;
+        renderInspectionTable(inspectionCurrentPage);
+        renderInspectionPagination();
+    };
+
+    document.addEventListener('click', function(e) {
+        if (e.target && e.target.id === 'downloadInspectionCSV') {
+            let csv = '입고일,로트번호,수량,기종,중량(kg),가공 완료 여부(Y/N),검사 완료 여부(Y/N)\n';
+            inspectionData.forEach(row => {
+                csv += `${row.입고일},${row.로트번호},${row.수량},${row.기종},${row.중량},${row.가공완료},${row.검사완료}\n`;
+            });
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = '검사_현황_리스트.csv';
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    }, true);
+
+    // 검사 메뉴가 열릴 때 테이블 렌더링
+    document.addEventListener('click', function(e) {
+        if (e.target && e.target.closest('.dashboard-button')) {
+            const btn = e.target.closest('.dashboard-button');
+            const btnText = btn.querySelector('p').textContent;
+            if (btnText === '검사') {
+                setTimeout(() => {
+                    inspectionCurrentPage = 1;
+                    renderInspectionTable(inspectionCurrentPage);
+                    renderInspectionPagination();
+                }, 100);
+            }
+        }
+    }, true);
+
+    // 창고 데이터 샘플 (실제 데이터로 교체 가능)
+    const warehouseData = [
+        {입고일: '2024-06-01', 로트번호: 'LOT001', 수량: 10, 기종: 'S26MC', 중량: 474, 가공완료: 'Y', 검사완료: 'Y', 출하일자: '2024-06-10', 출하수량: 10, 출하완료: 'Y'},
+        {입고일: '2024-06-02', 로트번호: 'LOT002', 수량: 8, 기종: 'DL28', 중량: 320, 가공완료: 'N', 검사완료: 'N', 출하일자: '', 출하수량: '', 출하완료: 'N'},
+        {입고일: '2024-06-03', 로트번호: 'LOT003', 수량: 12, 기종: 'LUN28', 중량: 332, 가공완료: 'Y', 검사완료: 'Y', 출하일자: '2024-06-12', 출하수량: 12, 출하완료: 'Y'},
+        {입고일: '2024-06-04', 로트번호: 'LOT004', 수량: 7, 기종: 'EL30', 중량: 500, 가공완료: 'N', 검사완료: 'N', 출하일자: '', 출하수량: '', 출하완료: 'N'},
+        {입고일: '2024-06-05', 로트번호: 'LOT005', 수량: 15, 기종: 'S28MC', 중량: 485, 가공완료: 'Y', 검사완료: 'Y', 출하일자: '2024-06-15', 출하수량: 15, 출하완료: 'Y'},
+        // ... 더 많은 데이터 추가 가능
+    ];
+    let warehouseCurrentPage = 1;
+    const warehouseItemsPerPage = 5;
+
+    function renderWarehouseTable(page) {
+        const startIdx = (page - 1) * warehouseItemsPerPage;
+        const endIdx = startIdx + warehouseItemsPerPage;
+        const pageData = warehouseData.slice(startIdx, endIdx);
+        let html = '<table style="width:50%; border-collapse:collapse; border:1px solid #ddd; min-width:420px;">';
+        html += '<thead><tr style="background:#f5f5f5;">';
+        html += '<th style="border:1px solid #ddd; padding:8px; width:3%; min-width:30px; max-width:60px;">입고일</th>';
+        html += '<th style="border:1px solid #ddd; padding:8px; width:3%; min-width:30px; max-width:60px;">로트번호</th>';
+        html += '<th style="border:1px solid #ddd; padding:8px; width:3%; min-width:30px; max-width:60px;">수량</th>';
+        html += '<th style="border:1px solid #ddd; padding:8px; width:3%; min-width:30px; max-width:60px;">기종</th>';
+        html += '<th style="border:1px solid #ddd; padding:8px; width:3%; min-width:30px; max-width:60px;">중량(kg)</th>';
+        html += '<th style="border:1px solid #ddd; padding:8px; width:3%; min-width:30px; max-width:60px;">가공 완료 여부(Y/N)</th>';
+        html += '<th style="border:1px solid #ddd; padding:8px; width:3%; min-width:30px; max-width:60px;">검사 완료 여부(Y/N)</th>';
+        html += '<th style="border:1px solid #ddd; padding:8px; width:3%; min-width:30px; max-width:60px;">출하일자</th>';
+        html += '<th style="border:1px solid #ddd; padding:8px; width:3%; min-width:30px; max-width:60px;">출하 수량</th>';
+        html += '<th style="border:1px solid #ddd; padding:8px; width:3%; min-width:30px; max-width:60px;">출하 완료 여부(Y/N)</th>';
+        html += '</tr></thead><tbody>';
+        if (pageData.length === 0) {
+            html += `<tr><td colspan="10" style="text-align:center; padding:24px; color:#888;">데이터가 없습니다.</td></tr>`;
+        } else {
+            pageData.forEach(row => {
+                html += `<tr>`;
+                html += `<td style='border:1px solid #ddd; padding:8px; width:3%; min-width:30px; max-width:60px;'>${row.입고일}</td>`;
+                html += `<td style='border:1px solid #ddd; padding:8px; width:3%; min-width:30px; max-width:60px;'>${row.로트번호}</td>`;
+                html += `<td style='border:1px solid #ddd; padding:8px; width:3%; min-width:30px; max-width:60px;'>${row.수량}</td>`;
+                html += `<td style='border:1px solid #ddd; padding:8px; width:3%; min-width:30px; max-width:60px;'>${row.기종}</td>`;
+                html += `<td style='border:1px solid #ddd; padding:8px; width:3%; min-width:30px; max-width:60px;'>${row.중량}</td>`;
+                html += `<td style='border:1px solid #ddd; padding:8px; width:3%; min-width:30px; max-width:60px;'>${row.가공완료}</td>`;
+                html += `<td style='border:1px solid #ddd; padding:8px; width:3%; min-width:30px; max-width:60px;'>${row.검사완료}</td>`;
+                html += `<td style='border:1px solid #ddd; padding:8px; width:3%; min-width:30px; max-width:60px;'>${row.출하일자}</td>`;
+                html += `<td style='border:1px solid #ddd; padding:8px; width:3%; min-width:30px; max-width:60px;'>${row.출하수량}</td>`;
+                html += `<td style='border:1px solid #ddd; padding:8px; width:3%; min-width:30px; max-width:60px;'>${row.출하완료}</td>`;
+                html += `</tr>`;
+            });
+        }
+        html += '</tbody></table>';
+        document.getElementById('warehouseTableContainer').innerHTML = html;
+    }
+
+    function renderWarehousePagination() {
+        const totalPages = Math.ceil(warehouseData.length / warehouseItemsPerPage);
+        let html = '';
+        if (warehouseCurrentPage > 1) {
+            html += `<button onclick="changeWarehousePage(${warehouseCurrentPage - 1})" style="background:#2196f3; color:white; padding:8px 15px; border:none; border-radius:4px; cursor:pointer; margin:0 5px;">이전</button>`;
+        }
+        for (let i = 1; i <= totalPages; i++) {
+            if (i === warehouseCurrentPage) {
+                html += `<button style="background:#4caf50; color:white; padding:8px 15px; border:none; border-radius:4px; margin:0 5px; font-weight:bold;">${i}</button>`;
+            } else {
+                html += `<button onclick="changeWarehousePage(${i})" style="background:#f0f0f0; color:#333; padding:8px 15px; border:1px solid #ddd; border-radius:4px; cursor:pointer; margin:0 5px;">${i}</button>`;
+            }
+        }
+        if (warehouseCurrentPage < totalPages) {
+            html += `<button onclick="changeWarehousePage(${warehouseCurrentPage + 1})" style="background:#2196f3; color:white; padding:8px 15px; border:none; border-radius:4px; cursor:pointer; margin:0 5px;">다음</button>`;
+        }
+        document.getElementById('warehousePagination').innerHTML = html;
+    }
+
+    window.changeWarehousePage = function(page) {
+        warehouseCurrentPage = page;
+        renderWarehouseTable(warehouseCurrentPage);
+        renderWarehousePagination();
+    };
+
+    document.addEventListener('click', function(e) {
+        if (e.target && e.target.id === 'downloadWarehouseCSV') {
+            let csv = '입고일,로트번호,수량,기종,중량(kg),가공 완료 여부(Y/N),검사 완료 여부(Y/N),출하일자,출하 수량,출하 완료 여부(Y/N)\n';
+            warehouseData.forEach(row => {
+                csv += `${row.입고일},${row.로트번호},${row.수량},${row.기종},${row.중량},${row.가공완료},${row.검사완료},${row.출하일자},${row.출하수량},${row.출하완료}\n`;
+            });
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = '창고_현황_리스트.csv';
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    }, true);
+
+    // 창고 메뉴가 열릴 때 테이블 렌더링
+    document.addEventListener('click', function(e) {
+        if (e.target && e.target.closest('.dashboard-button')) {
+            const btn = e.target.closest('.dashboard-button');
+            const btnText = btn.querySelector('p').textContent;
+            if (btnText === '창고') {
+                setTimeout(() => {
+                    warehouseCurrentPage = 1;
+                    renderWarehouseTable(warehouseCurrentPage);
+                    renderWarehousePagination();
+                }, 100);
+            }
+        }
+    }, true);
 }); 
